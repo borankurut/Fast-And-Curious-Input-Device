@@ -1,0 +1,12 @@
+
+* socket implementation 
+
+* refactoring
+
+* steering wheel angle will be set to 0 after one full rotation in current implementation and the position of the steering wheel
+	is important when steering_wheel_input.py is runned. maybe fix these.
+
+* map potantiometer outputs to [0, 1] for gas, break levels
+
+* vibration motors' time and vibration level input from game?
+
