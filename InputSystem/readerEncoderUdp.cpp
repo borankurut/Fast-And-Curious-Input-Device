@@ -29,7 +29,6 @@ int main() {
     
         int sockfd;
         char buffer[MAXLINE];
-//      char hello[] = "Hello from server";
         struct sockaddr_in servaddr, cliaddr;
 
         // Creating socket file descriptor
@@ -63,10 +62,8 @@ int n;
 
       key_t key = ftok("shmfile", 65);
 
-    // shmget returns an identifier in shmid
     int shmid = shmget(key, 2 * sizeof(float) + sizeof(double), 0666 | IPC_CREAT);
 
-    // shmat to attach to shared memory
     float* sSpeed = (float*)shmat(shmid, nullptr, 0);
     double* sAngle = (double*)(sSpeed + 1);  // Offset to get the next location in shared memory
     

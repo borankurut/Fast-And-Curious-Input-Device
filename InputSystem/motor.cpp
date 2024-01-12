@@ -33,8 +33,8 @@ public:
         wiringPiSetup();
         R_EN = 3;
         L_EN = 4;
-        RPWM = 23;  // Assuming GPIO 1 for RPWM
-        LPWM = 1; // Assuming GPIO 26 for LPWM
+        RPWM = 23;  
+        LPWM = 1; 
         
         status = 0;
 
@@ -159,10 +159,8 @@ int main() {
  
     key_t key = ftok("shmfile", 65);
 
-    // shmget returns an identifier in shmid
     int shmid = shmget(key, 2 * sizeof(float) + sizeof(double), 0666 | IPC_CREAT);
 
-    // shmat to attach to shared memory
     float* notImp = (float*)shmat(shmid, nullptr, 0);
     double* sAngle = (double*)(notImp + 1);  // Offset to get the next location in shared memory
  
@@ -224,46 +222,5 @@ int main() {
     driver.cleanup();
     
     
-    /*
-     * ***************************
-     * 
-        if(*sAngle < -offset){
-            std::cout<<*sAngle << std::endl;
-            if(*sAngle < 0)
-                driver.right(3);
-        }
-        else if(*sAngle > offset){
-            std::cout<<*sAngle << std::endl;
-            if(*sAngle > 0)
-                driver.left(3);
-        }
-        else
-            driver.neutral();
-        
-     * **************************
-     * 
-      double offset = 10.0;
-    double deadband = 0.1;  // Adjust this value based on your system's sensitivity
-
-    // Read the current wheel angle from the encoder
-    double currentAngle = readWheelAngle();
-
-    // Calculate the desired motor position based on the offset
-    double desiredPosition = offset;
-
-    // Check if the current angle is within the deadband around the desired position
-    if (std::abs(currentAngle - desiredPosition) < deadband) {
-        stopMotor();
-    } else {
-        // Determine the direction to move the motor based on the current angle
-        if (currentAngle > desiredPosition) {
-            moveMotorLeft();
-        } else {
-            moveMotorRight();
-        }
-    }
-     * 
-     * */
-
     return 0;
 }
