@@ -1,0 +1,10 @@
+1. connect rpi and pc that plays the game using ethernet cable.
+2. connect rpi using ssh from pc
+3. run home/pi/Desktop/InputSystem/readwrite.sh
+4. run gameInput.bat on pc.
+5. connect rpi using ssh from another terminal
+6. type hostname on cmd in pc and note the hostname.
+7. open home/pi/Desktop/InputSystem/motor.cpp and change the hostname to the hostname of your pc.
+8. run home/pi/Desktop/InputSystem/run_motor.sh
+9. run FastAndCurious.exe on the pc.
+
